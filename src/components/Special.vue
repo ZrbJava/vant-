@@ -2,6 +2,7 @@
     <div>
           <!-- 专场商品列表 -->
         <van-list v-model="loading"  :finished="finished" @load="loadMore" >
+            
         <!-- 专场 -->
         <div class="Special">清风专场</div>
                 <!-- 热卖 -->
@@ -126,7 +127,8 @@ export default {
           this.finished = true;
         }
       }, 500);
-    }
+    },
+    
   },
   created() {}
 };

@@ -141,6 +141,9 @@ export default {
           this.finished = true;
         }
       }, 500);
+    },
+    test1(){
+        window.zhangwoAndroid.JumpShopDetail();
     }
   },
   created() {}
