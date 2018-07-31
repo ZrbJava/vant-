@@ -101,10 +101,7 @@ export default {
     };
   },
   methods: {
-    test() {
-      console.log(this.active);
-      // alert(this.active);
-    },
+
     // 下拉刷新
     onRefresh() {
       setTimeout(() => {
