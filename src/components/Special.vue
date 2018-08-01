@@ -137,6 +137,7 @@ export default {
       var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
       alert('是否是Android：'+isAndroid);
       alert('是否是iOS：'+isiOS);
+      alert("你倒是出来啊");
        window.zhangwoAndroid.JumpShopDetail("1530",13674,);
     }
     
