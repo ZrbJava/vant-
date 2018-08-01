@@ -8,19 +8,22 @@
                 <!-- 热卖 -->
                 <div class="shopList">
                     <div class="itemTop">
-                    <div class="item" v-for="(item,index) in img" :key="index">
-                        <div class="imgBox" style="margin-right:0">
+                    <div class="item" v-for="(item,index) in img" :key="index" @click="goAppDetail">
+                        <div class="imgBox">
                             <img class="shopImg" v-lazy="item"  alt="">
                             <!-- 抢光了 -->
                             <div class="endBox" v-show="index % 2 == 0">
                             <span style="font-size:16px">抢光了</span>
-                            <spa style="font-size:10px">SOLD OUT</spa>
+                            <span style="font-size:10px">SOLD OUT</span>
                             </div>
                         </div>
                         <div class="shopName">水山 SB45 破碎锤修理包 下部油封</div>
                         <div class="price">
-                            <span>￥250</span>
-                            <img src="../assets/cart.png" alt="" class="cart">
+                            <div>
+                                <span>￥250</span>
+                                
+                            </div>
+                                <img src="../assets/cart.png" alt="" class="cart">
                         </div>
                     </div>
                 </div>
@@ -32,17 +35,20 @@
                             <!-- 抢光了 -->
                             <div class="endBox" v-show="index == 1 || index == 5 || index == 9">
                             <span style="font-size:16px">抢光了</span>
-                            <spa style="font-size:10px">SOLD OUT</spa>
+                            <span style="font-size:10px">SOLD OUT</span>
                             </div>
                         </div>
-                    <div class="right">
-                        <div class="shopTitle">卡特CAT 通用 柴油滤芯 364-52</div>
-                        <div class="fireHot">火爆推荐</div>
-                        <div class="price">
-                            <span> <span style="font-size:12px">￥</span> 250</span>
-                            <img src="../assets/cart.png" alt="" class="cart">
+                        <div class="right">
+                            <div class="shopTitle">卡特CAT 通用 柴油滤芯 364-52</div>
+                            <div class="fireHot">火爆推荐</div>
+                            <div class="price">
+                                <div>
+                                    <span> <span style="font-size:12px">￥</span> 250</span>
+                                    <span style="font-size:12px;color:#999;text-decoration: line-through;" >￥200</span>
+                                </div>
+                                <img src="../assets/cart.png" alt="" class="cart">
+                            </div>
                         </div>
-                    </div>
                 </div>
                 <!-- 专场结束位置 -->
         </div>
@@ -125,6 +131,9 @@ export default {
         }
       }, 500);
     },
+    goAppDetail(){
+       window.zhangwoAndroid.JumpShopDetail("12",2510,);
+    }
     
   },
   created() {}
@@ -136,7 +145,12 @@ export default {
 // 抢光了部分
 .imgBox {
   position: relative;
-  margin-right: 18px;
+  flex:0;
+}
+.right{
+    flex:1;
+    padding-left:18px;
+    box-sizing:border-box;
 }
 .endBox {
   width: 80px;
@@ -178,9 +192,9 @@ export default {
   margin-bottom: 10px;
 }
 // 专场商品列表
-.shopList {
-  padding: 0 15px;
-}
+// .shopList {
+  
+// }
 .itemTop {
   display: flex;
   justify-content: space-between;
@@ -215,6 +229,9 @@ export default {
   margin-top: 34px;
   width: 100%;
   height: 130px;
+  display: flex;
+  padding: 0 15px;
+  box-sizing: border-box;
   // background:green;
   box-shadow: 0px 1px 0px 0px rgba(238, 238, 238, 1);
   border-bottom: 1px solid #eeeeee;
@@ -270,4 +287,5 @@ export default {
   color: #b4b4b4;
   font-size: 12px;
 }
+// 购物车的数量
 </style>
