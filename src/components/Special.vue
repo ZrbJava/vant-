@@ -132,7 +132,7 @@ export default {
       }, 500);
     },
     goAppDetail(){
-       window.zhangwoAndroid.JumpShopDetail("12",2510,);
+       window.zhangwoAndroid.JumpShopDetail("1530",13674,);
     }
     
   },
