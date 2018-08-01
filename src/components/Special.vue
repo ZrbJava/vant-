@@ -8,7 +8,7 @@
                 <!-- 热卖 -->
                 <div class="shopList">
                     <div class="itemTop">
-                    <div class="item" v-for="(item,index) in img" :key="index">
+                    <div class="item" v-for="(item,index) in img" :key="index" @click="goAppDetail">
                         <div class="imgBox">
                             <img class="shopImg" v-lazy="item"  alt="">
                             <!-- 抢光了 -->
@@ -132,6 +132,7 @@ export default {
       }, 500);
     },
     goAppDetail(){
+      alert();
        window.zhangwoAndroid.JumpShopDetail("1530",13674,);
     }
     
