@@ -8,7 +8,7 @@
                 <!-- 热卖 -->
                 <div class="shopList">
                     <div class="itemTop">
-                    <div class="item" v-for="(item,index) in img" :key="index" @click="goAppDetail">
+                    <div class="item" v-for="(item,index) in img" :key="index">
                         <div class="imgBox">
                             <img class="shopImg" v-lazy="item"  alt="">
                             <!-- 抢光了 -->
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <!-- 热卖下的商品列表 -->
-                <div class="shopItem" v-for="(imgs,index) in imgList" :key="index">
+                <div class="shopItem" v-for="(imgs,index) in imgList" :key="index" @click="goAppDetail">
                         <!-- <img class="shopImg" v-lazy="img" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3008997697,2144665381&fm=58&bpow=491&bpoh=491" alt=""> -->
                         <div class="imgBox">
                             <img v-lazy="imgs" class="shopImgs">
