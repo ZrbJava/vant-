@@ -135,6 +135,7 @@ export default {
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
       var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端      
        if(isAndroid){
+         var isLogin = false;
         //  判断是否有token没有的的话就表示没有登录，则跳到登录界面
           if(isLogin){
             window.zhangwoAndroid.JumpToLogin();
