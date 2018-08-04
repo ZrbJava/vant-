@@ -1,0 +1,258 @@
+<!doctype html>
+
+<html lang="zh-cn">
+
+<head>
+
+    <link rel="shortcut icon" href="http://m.palmar.cn/Public/admin/image/favicon.ico">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>掌窝工程机械</title>
+
+    <script type="text/javascript" src="http://m.palmar.cn/Public/index/js/jquery.js"></script>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+    <script>
+        wx.config({
+
+            appId: '',
+
+            timestamp: '',
+
+            nonceStr: '',
+
+            signature: '',
+
+            jsApiList: [
+
+                'onMenuShareTimeline',
+
+                'onMenuShareAppMessage',
+
+                'onMenuShareQQ',
+
+                'onMenuShareWeibo'
+
+            ]
+
+        });
+
+        var wechatCFG = {
+
+            title: '掌窝工程机械客户端：好的配件，没那么贵',
+
+            imgUrl: 'http://img.palmar.cn/image/notfound.png',
+
+            link: 'http://m.palmar.cn/index/index/index.html',
+
+            success: function() {},
+
+            cancel: function() {}
+
+        };
+
+        wx.ready(function() {
+
+            wx.onMenuShareTimeline(wechatCFG);
+
+            wechatCFG = $.extend({
+
+                desc: '我发现了一个靠谱的APP，一线品牌经销商直供！正品低价、售后有保证。'
+
+            }, wechatCFG);
+
+            wx.onMenuShareAppMessage(wechatCFG);
+
+            wx.onMenuShareQQ(wechatCFG);
+
+            wx.onMenuShareWeibo(wechatCFG);
+
+        });
+    </script>
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        
+        a {
+            display: block;
+        }
+        
+        html,
+        body,
+        img,
+        .bg,
+        .loadimg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        img {
+            vertical-align: middle;
+            border: 0;
+        }
+        
+        .bg {
+            background-image: url("http://m.palmar.cn/Public/index/download/download2.jpg");
+            background-size: cover;
+        }
+        
+        .loadimg {
+            background-image: url("http://m.palmar.cn/Public/index/download/download1.png");
+            background-size: cover;
+            background-position: bottom;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body class="bg">
+
+    <div class="loadimg" onclick="a()"></div>
+
+    <script>
+        function Is_Weixin() {
+
+            var ua = window.navigator.userAgent.toLowerCase();
+
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+
+                return true;
+
+            } else {
+
+                return false;
+
+            }
+
+        }
+
+        function Is_PC() {
+
+            var userAgentInfo = navigator.userAgent;
+
+            var Agents = ["Android", "iPhone",
+
+                "SymbianOS", "Windows Phone",
+
+                "iPad", "iPod"
+            ];
+
+            var flag = true;
+
+            for (var v = 0; v < Agents.length; v++) {
+
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+
+                    flag = false;
+
+                    break;
+
+                }
+
+            }
+
+            return flag;
+
+        }
+
+
+
+        function Is_PhoneType() {
+
+            var u = navigator.userAgent,
+                app = navigator.appVersion;
+
+            var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+
+            var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+            if (isAndroid) {
+
+                return "Android";
+
+            }
+
+            if (isIOS) {
+
+                return "IOS";
+
+            }
+
+        }
+
+        // $(".loadimg").click(function () {
+
+        //     var TheUrl='';
+
+        //     if(Is_Weixin()){
+
+        //         TheUrl="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+
+        //     }else{
+
+        //         if(Is_PC()){
+
+        //             TheUrl="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+
+        //         }else if(Is_PhoneType()=='Android'){
+
+        //             TheUrl="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+
+        //         }else if(Is_PhoneType()=='IOS'){
+
+        //             TheUrl="https://itunes.apple.com/cn/app/id1075801122";
+
+        //         }
+
+        //     }
+        //     alert(TheUrl);
+
+        // location.replace(TheUrl);
+        // location.href=TheUrl;
+
+        // });
+        // $(".loadimg").bind('touchstart',function () {
+        //     var TheUrl='';
+        //     if(Is_Weixin()){
+        //         TheUrl="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+        //     }else{
+        //         if(Is_PC()){
+        //             TheUrl="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+        //         } else if(Is_PhoneType()=='Android'){
+        //             TheUrl="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+        //         } else if(Is_PhoneType()=='IOS'){
+        //             TheUrl="https://itunes.apple.com/cn/app/id1075801122";
+        //         }
+        //     }
+        //     location.href=TheUrl;
+        // });
+        function a() {
+            // alert(1234);
+            var TheUrl = '';
+            if (Is_Weixin()) {
+                TheUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+            } else {
+                if (Is_PC()) {
+                    TheUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+                } else if (Is_PhoneType() == 'Android') {
+                    TheUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo";
+                } else if (Is_PhoneType() == 'IOS') {
+                    TheUrl = "https://itunes.apple.com/cn/app/id1075801122";
+                }
+            }
+            location.href = TheUrl;
+        }
+    </script>
+
+</body>
+
+</html>

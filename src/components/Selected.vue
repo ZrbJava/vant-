@@ -23,6 +23,8 @@
                           <h1 @click="toLoginTest">跳转登录</h1>
                           <hr>
                           <h1 @click="getUserInfo">getUserInfo</h1>
+                          <hr>
+                          <a href="zhangwo.818.sales://article/attr?name=zhangsan&age=26">启动应用程序</a >
                           <special @addCart="addCart"></special>
                         </div>
                         <div v-show="active == 1">
@@ -121,24 +123,20 @@ export default {
     };
   },
   methods: {
+    // 改变tab时候获取索引
     test(){
-
+      console.log();
     },
     getUserInfo(){
       var UserInfo = window.zhangwoAndroid.getUserInfo();
-      // console.log();
-      // alert("你最帅");
-      // alert(JSON.parse(UserInfo));
-      console.log();
       alert(JSON.parse(UserInfo)[0]);
       alert(JSON.parse(UserInfo)[1]);
     },
    addCart(count){
      console.log(count);
-    //  alert(count);
      this.count = count;
    },
-  //  条状登录测试
+  //  跳转登录测试
   toLoginTest(){
     window.zhangwoAndroid.JumpToLogin();
   },
@@ -148,7 +146,6 @@ export default {
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
       var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端      
       if(isAndroid){
-       
         window.zhangwoAndroid.JumpToShopCartActivity();
       }else if(isiOS){
         //  执行ios代码

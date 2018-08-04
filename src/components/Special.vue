@@ -120,6 +120,7 @@ export default {
     ...mapMutations(["addCart"]),
     shopCart(){
       // alert(this.count)
+      alert("添加购物车前检测是否有token—_id或设备号");
       let UserInfo = window.zhangwoAndroid.getUserInfo();
       let token_id = JSON.parse(UserInfo)[0];
       let dev_token = JSON.parse(UserInfo)[1];
@@ -159,11 +160,7 @@ export default {
     goAppDetail(){
       var u = navigator.userAgent;
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-      var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-      // alert('是否是Android：'+isAndroid);
-      // alert('是否是iOS：'+isiOS);
-      // alert("你倒是出来啊");
-      
+      var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端      
        if(isAndroid){
           window.zhangwoAndroid.JumpShopDetail("1530",13674,);
        }else if(isiOS){
@@ -186,6 +183,7 @@ export default {
   position: fixed;
   left:0;
   top:0;
+  
 }
 
 // 抢光了部分

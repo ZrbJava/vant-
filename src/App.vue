@@ -21,6 +21,10 @@ export default {
       
     }
    
+  },
+  created(){
+    alert(navigator.userAgent);
+    
   }
 }
 
