@@ -188,7 +188,7 @@ export default {
   created() {
    
   },
-  active(){
+  activated(){
      alert(222);
     let UserInfo = window.zhangwoAndroid.getUserInfo();
     // let token_id = JSON.parse(UserInfo)[0];
