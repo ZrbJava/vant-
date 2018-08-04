@@ -191,6 +191,8 @@ export default {
     let UserInfo = [];
     let token_id = JSON.parse(UserInfo)[0];
     let dev_token = JSON.parse(UserInfo)[1];
+    alert(token_id)
+    alert(dev_token)
     if( token_id == "" && dev_token == "" ){
       alert(22222);
         window.zhangwoAndroid.JumpToLogin();
