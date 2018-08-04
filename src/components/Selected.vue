@@ -147,24 +147,13 @@ export default {
       var u = navigator.userAgent;
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
       var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端      
-      let UserInfo = window.zhangwoAndroid.getUserInfo();
-      // let token_id = JSON.parse(UserInfo)[0];
-      // let dev_token = JSON.parse(UserInfo)[1];
-      let token_id = "";
-      let dev_token = "";
-      alert(token_id)
-      alert(dev_token)
-      if( token_id == "" && dev_token == "" ){
-          alert("tokenid和设备id都为空，确定跳转到登录界面");
-          window.zhangwoAndroid.JumpToLogin();//执行跳转到登录界面
-      }else{
-          alert("进来了");
-          if(isAndroid){
-            window.zhangwoAndroid.JumpToShopCartActivity();
-          }else if(isiOS){
-            //  执行ios代码
-          }
+      if(isAndroid){
+       
+        window.zhangwoAndroid.JumpToShopCartActivity();
+      }else if(isiOS){
+        //  执行ios代码
       }
+    
        
     
    },
