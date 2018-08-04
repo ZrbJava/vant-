@@ -129,7 +129,9 @@ export default {
       // console.log();
       // alert("你最帅");
       // alert(JSON.parse(UserInfo));
-      alert(UserInfo);
+      console.log();
+      alert(JSON.parse(UserInfo)[0]);
+      alert(JSON.parse(UserInfo)[1]);
     },
    addCart(count){
      console.log(count);
