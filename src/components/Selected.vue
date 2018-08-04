@@ -143,6 +143,7 @@ export default {
     window.zhangwoAndroid.JumpToLogin();
   },
    toAppShopCart(){
+     alert("准备跳转购物车");
       var u = navigator.userAgent;
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
       var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端      
@@ -154,21 +155,17 @@ export default {
       alert(token_id)
       alert(dev_token)
       if( token_id == "" && dev_token == "" ){
-        alert(3333);
-          window.zhangwoAndroid.JumpToLogin();
-      }
-       if(isAndroid){
-         var isLogin = false;
-        //  判断是否有token没有的的话就表示没有登录，则跳到登录界面
-          if(isLogin){
-            window.zhangwoAndroid.JumpToLogin();
-          }else{
-            // 否则跳到购物车页面
+          alert("tokenid和设备id都为空，确定跳转到登录界面");
+          window.zhangwoAndroid.JumpToLogin();//执行跳转到登录界面
+      }else{
+          alert("进来了");
+          if(isAndroid){
             window.zhangwoAndroid.JumpToShopCartActivity();
+          }else if(isiOS){
+            //  执行ios代码
           }
-       }else if(isiOS){
-        //  执行ios代码
-       }
+      }
+       
     
    },
     // 下拉刷新
