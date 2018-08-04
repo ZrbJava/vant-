@@ -127,9 +127,9 @@ export default {
     getUserInfo(){
       var UserInfo = window.zhangwoAndroid.getUserInfo();
       // console.log();
-      alert("你最帅");
+      // alert("你最帅");
       // alert(JSON.parse(UserInfo));
-      alert(JSON.stringify(UserInfo));
+      alert(UserInfo);
     },
    addCart(count){
      console.log(count);
