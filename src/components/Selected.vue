@@ -186,15 +186,19 @@ export default {
     },
   },
   created() {
-    alert(111);
-    // let UserInfo = window.zhangwoAndroid.getUserInfo();
-    let UserInfo = [];
-    let token_id = JSON.parse(UserInfo)[0];
-    let dev_token = JSON.parse(UserInfo)[1];
+   
+  },
+  active(){
+     alert(222);
+    let UserInfo = window.zhangwoAndroid.getUserInfo();
+    // let token_id = JSON.parse(UserInfo)[0];
+    // let dev_token = JSON.parse(UserInfo)[1];
+    let token_id = "";
+    let dev_token = "";
     alert(token_id)
     alert(dev_token)
     if( token_id == "" && dev_token == "" ){
-      alert(22222);
+      alert(3333);
         window.zhangwoAndroid.JumpToLogin();
     }
   }
