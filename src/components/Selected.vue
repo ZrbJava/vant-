@@ -186,12 +186,13 @@ export default {
     },
   },
   created() {
-    // alert(111);
+    alert(111);
     // let UserInfo = window.zhangwoAndroid.getUserInfo();
     let UserInfo = [];
     let token_id = JSON.parse(UserInfo)[0];
     let dev_token = JSON.parse(UserInfo)[1];
     if( token_id == "" && dev_token == "" ){
+      alert(22222);
         window.zhangwoAndroid.JumpToLogin();
     }
   }
