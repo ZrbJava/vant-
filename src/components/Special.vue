@@ -9,8 +9,8 @@
                 <!-- 热卖 -->
                 <div class="shopList">
                     <div class="itemTop">
-                    <div class="item" v-for="(item,index) in img" :key="index" @click="goAppDetail">
-                        <div class="imgBox">
+                    <div class="item" v-for="(item,index) in img" :key="index">
+                        <div class="imgBox" @click="goAppDetail">
                             <img class="shopImg" v-lazy="item"  alt="">
                             <!-- 抢光了 -->
                             <div class="endBox" v-show="index % 2 == 0">
@@ -18,9 +18,9 @@
                             <span style="font-size:10px">SOLD OUT</span>
                             </div>
                         </div>
-                        <div class="shopName">水山 SB45 破碎锤修理包 下部油封</div>
+                        <div class="shopName" @click="goAppDetail">水山 SB45 破碎锤修理包 下部油封</div>
                         <div class="price">
-                            <div>
+                            <div @click="goAppDetail">
                                 <span>￥250</span>
                                 
                             </div>
@@ -30,9 +30,9 @@
                     </div>
                 </div>
                 <!-- 热卖下的商品列表 -->
-                <div class="shopItem" v-for="(imgs,index) in imgList" :key="index" @click="goAppDetail">
+                <div class="shopItem" v-for="(imgs,index) in imgList" :key="index" >
                         <!-- <img class="shopImg" v-lazy="img" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3008997697,2144665381&fm=58&bpow=491&bpoh=491" alt=""> -->
-                        <div class="imgBox">
+                        <div class="imgBox" @click="goAppDetail">
                             <img v-lazy="imgs" class="shopImgs">
                             <!-- 抢光了 -->
                             <div class="endBox" v-show="index == 1 || index == 5 || index == 9">
@@ -41,10 +41,10 @@
                             </div>
                         </div>
                         <div class="right">
-                            <div class="shopTitle">卡特CAT 通用 柴油滤芯 364-52</div>
-                            <div class="fireHot">火爆推荐</div>
+                            <div class="shopTitle" @click="goAppDetail">卡特CAT 通用 柴油滤芯 364-52</div>
+                            <div class="fireHot" @click="goAppDetail">火爆推荐</div>
                             <div class="price">
-                                <div>
+                                <div @click="goAppDetail">
                                     <span> <span style="font-size:12px">￥</span> 250</span>
                                     <span style="font-size:12px;color:#999;text-decoration: line-through;" >￥200</span>
                                 </div>
@@ -181,7 +181,8 @@ export default {
 // 抢光了部分
 .imgBox {
   position: relative;
-  flex:0;
+  // flex:0;
+  flex:none;
 }
 .right{
     flex:1;
