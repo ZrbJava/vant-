@@ -1,6 +1,7 @@
 <template>
     <div>
           <!-- 专场商品列表 -->
+          
         <van-list v-model="loading"  :finished="finished" @load="loadMore" >
             
         <!-- 专场 -->
@@ -23,7 +24,8 @@
                                 <span>￥250</span>
                                 
                             </div>
-                                <img src="../assets/cart.png" alt="" class="cart">
+                                <img src="../assets/cart.png" alt="" class="cart" @click="shopCart">
+                                <!-- <cart @addCart="addCart" class="cart"></cart> -->
                         </div>
                     </div>
                 </div>
@@ -46,31 +48,38 @@
                                     <span> <span style="font-size:12px">￥</span> 250</span>
                                     <span style="font-size:12px;color:#999;text-decoration: line-through;" >￥200</span>
                                 </div>
-                                <img src="../assets/cart.png" alt="" class="cart">
+                                <img src="../assets/cart.png" alt="" class="cart" @click="shopCart">
                             </div>
+                         
                         </div>
                 </div>
                 <!-- 专场结束位置 -->
         </div>
         <div class="finish" v-show="finished">已经到底部了</div>
+       
         </van-list>
+          
+       
     </div>
 </template>
 
 <script>
+import {mapState,mapMutations} from "vuex";
 import {  Lazyload, List } from "vant";
+import Cart from "./cart/cart"
 import Vue from "vue";
 // options 为可选参数，无则不传
 Vue.use(Lazyload);
 // import { Lazyload } from 'vant';
 export default {
   components: {
-    List
+    List,
+    Cart
   },
   name: "App",
   data() {
     return {
-      count: 0,
+      // count: 0,
       isLoading: false,
       loading: false, //初始化loading状态
       finished: false, //是否已经加载完毕
@@ -103,11 +112,17 @@ export default {
         "https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg",
         "https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg",
         "https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg"
-      ]
+      ],
+     
     };
   },
   methods: {
-
+    ...mapMutations(["addCart"]),
+    shopCart(){
+      // alert(this.count)
+      this.addCart();
+      this.$emit("addCart",this.count);
+    },
     // 下拉刷新
     onRefresh() {
       setTimeout(() => {
@@ -135,18 +150,33 @@ export default {
       var u = navigator.userAgent;
       var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
       var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-      alert('是否是Android：'+isAndroid);
-      alert('是否是iOS：'+isiOS);
-      alert("你倒是出来啊");
-       window.zhangwoAndroid.JumpShopDetail("1530",13674,);
-    }
-    
+      // alert('是否是Android：'+isAndroid);
+      // alert('是否是iOS：'+isiOS);
+      // alert("你倒是出来啊");
+      
+       if(isAndroid){
+          window.zhangwoAndroid.JumpShopDetail("1530",13674,);
+       }else if(isiOS){
+        //  执行ios代码
+       }
+    },
   },
-  created() {}
+  computed:{
+    ...mapState(["count"]),
+  },
+  created(){
+   
+  }
+  
 };
 </script>
 
 <style lang="less" >
+.van-tabs--line .van-tabs__wrap{
+  position: fixed;
+  left:0;
+  top:0;
+}
 
 // 抢光了部分
 .imgBox {
@@ -271,17 +301,6 @@ export default {
     }
   }
 }
-// 底部购物车状态
-.cartIcon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  position: fixed;
-  left: 15px;
-  bottom: 22px;
-  overflow: hidden;
-  z-index: 100;
-}
 
 // 没有更多数据
 .finish {
@@ -292,6 +311,43 @@ export default {
   text-align: center;
   color: #b4b4b4;
   font-size: 12px;
+ 
 }
 // 购物车的数量
+
+
+// 新增加的
+
+/* 小球落下的最终位置 */
+ .ball{
+    //  position: fixed;
+     left: 32px;
+     bottom: 22px;
+     z-index: 99900;
+     transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41); /*贝塞尔曲线*/
+ }
+ .inner{
+     width: 16px;
+     height: 16px;
+     border-radius: 50%;
+     background-color: rgb(0,160,220);
+     transition: all 0.4s linear;
+}
+// 新增加的
+
+ .ball{
+    //  position: fixed;
+     left: 32px;
+     bottom: 22px;
+     z-index: 200;
+     transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41); /*贝塞尔曲线*/
+ }
+ .inner{
+     width: 16px;
+     height: 16px;
+     border-radius: 50%;
+     background-color: rgb(0,160,220);
+     transition: all 0.4s linear;
+}
+
 </style>

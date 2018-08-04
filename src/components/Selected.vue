@@ -1,7 +1,6 @@
 <template>
     <div class="tabItem">
         <!-- 精选 -->
-
             <van-tabs v-model="active" swipeable  @change="test">
                 <van-tab v-for="(item,index) in tab" :title="item" :key="index" >
                     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" >
@@ -18,38 +17,43 @@
                            
                             <div class="finish" v-show="finished">已经到底部了</div>
                           </van-list> -->
-                          <special></special>
+                          <h1 @click="toLoginTest">跳转登录</h1>
+                          <h1 @click="toLoginTest">跳转登录</h1>
+                          <h1 @click="toLoginTest">跳转登录</h1>
+                          <h1 @click="toLoginTest">跳转登录</h1>
+                          <special @addCart="addCart"></special>
                         </div>
                         <div v-show="active == 1">
                           <h1>发动机件</h1>
-                          <special></special>
+                          <special @addCart="addCart"></special>
                         </div>
                         <div v-show="active == 2">
                           <h1>液压件</h1>
-                          <special></special>
+                          <special @addCart="addCart" ></special>
                         </div>
                         <div v-show="active == 3">
                           <h1>电器件</h1>
-                          <special></special>
+                          <special @addCart="addCart"></special>
                         </div>
                         <div v-show="active == 4">
                           <h1>密封件</h1>
-                          <special></special>
+                          <special @addCart="addCart" ></special >
                         </div>
                         <div v-show="active == 5">
                           <h1>油品</h1>
-                          <special></special>
+                          <special @addCart="addCart" ></special>
                         </div>
                         
                       
                     </van-pull-refresh>
                 </van-tab>
             </van-tabs>
-             <!-- 底部 -->
-            <div>
-                <img src="../assets/cartIcon.png" alt="" class="cartIcon">
-                <!-- <img src="../assets/cartIcon.png" alt="" class="cartIcon"> -->
+             <!-- 底部购物车 -->
+            <div class="cartBox" @click="toAppShopCart">
+                <div class="bradge" v-show="count > 0">{{count}}</div>
+                <img src="../assets/cartIcon.png" alt="" class="cartIcon">            
             </div>
+            
            
        
       
@@ -115,10 +119,34 @@ export default {
     };
   },
   methods: {
-    test() {
-      console.log(this.active);
-      // alert(this.active);
+    test(){
+
     },
+   addCart(count){
+     console.log(count);
+    //  alert(count);
+     this.count = count;
+   },
+  toLoginTest(){
+    window.zhangwoAndroid.JumpToLogin();
+  },
+   toAppShopCart(){
+      var u = navigator.userAgent;
+      var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+      var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端      
+       if(isAndroid){
+        //  判断是否有token没有的的话就表示没有登录，则跳到登录界面
+          if(isLogin){
+            window.zhangwoAndroid.JumpToLogin();
+          }else{
+            // 否则跳到购物车页面
+            window.zhangwoAndroid.JumpToShopCartActivity();
+          }
+       }else if(isiOS){
+        //  执行ios代码
+       }
+    
+   },
     // 下拉刷新
     onRefresh() {
       setTimeout(() => {
@@ -166,5 +194,60 @@ body {
   box-sizing: border-box;
   overflow: hidden;
 }
+.cartBox{
+  width: 36px;
+  height: 36px;
+  position: fixed;
+  left: 15px;
+  bottom: 22px;
+  z-index: 100;
+}
+// 底部购物车状态
+.cartIcon {
+  width:100%;
+  height:100%;
+  border-radius: 50%;
 
+}
+// 底部购物车
+.bradge{
+  width:20px;
+  height:20px;
+  
+  border-radius: 50%;
+  font-size:9px;
+  color:#fff;
+  background:#F05B29;
+  text-align:center;
+  line-height:20px;
+  position: absolute;
+  top: -8px;
+  right: -4px;
+}
+
+// 小球
+/* 小球落下的最终位置 */
+ .ball{
+    //  position: fixed;
+    
+    //  left: 15px;
+    //  bottom: 22px;
+    width:100px;
+    height:100px;
+    left:0;
+    top:0;
+    z-index:10000;
+    //  z-index: 99999;
+     /* 贝塞尔曲线 */
+     transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41); 
+     /* transition: all 0.4s cubic-bezier(1,.11,.06,1.33); 贝塞尔曲线 */
+     /* transition: all 6s cubic-bezier(.08,1.86,.5,-1.07); 贝塞尔曲线 */
+ }
+ .inner{
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     background-color: rgb(0,160,220);
+     transition: all 0.4s linear;
+}
 </style>
