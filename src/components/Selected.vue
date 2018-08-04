@@ -21,6 +21,8 @@
                           <h1 @click="toLoginTest">跳转登录</h1>
                           <h1 @click="toLoginTest">跳转登录</h1>
                           <h1 @click="toLoginTest">跳转登录</h1>
+                          <hr>
+                          <h1 @click="getUserInfo">getUserInfo</h1>
                           <special @addCart="addCart"></special>
                         </div>
                         <div v-show="active == 1">
@@ -122,11 +124,17 @@ export default {
     test(){
 
     },
+    getUserInfo(){
+      var UserInfo = window.zhangwoAndroid.getUserInfo();
+      // console.log();
+      alert(UserInfo);
+    },
    addCart(count){
      console.log(count);
     //  alert(count);
      this.count = count;
    },
+  //  条状登录测试
   toLoginTest(){
     window.zhangwoAndroid.JumpToLogin();
   },
@@ -181,19 +189,21 @@ export default {
 </script>
 
 <style lang="less" >
+
 html,
 body {
   box-sizing: border-box;
 }
-.van-tab--active {
-  color: #f05b29;
-}
-.van-tabs__line {
-  background-color: #f05b29;
-}
+
 .tabItem {
   box-sizing: border-box;
   overflow: hidden;
+  .van-tab--active {
+    color: #f05b29;
+  }
+  .van-tabs__line {
+    background-color: #f05b29;
+  }
 }
 .cartBox{
   width: 36px;
@@ -226,29 +236,5 @@ body {
   right: -4px;
 }
 
-// 小球
-/* 小球落下的最终位置 */
- .ball{
-    //  position: fixed;
-    
-    //  left: 15px;
-    //  bottom: 22px;
-    width:100px;
-    height:100px;
-    left:0;
-    top:0;
-    z-index:10000;
-    //  z-index: 99999;
-     /* 贝塞尔曲线 */
-     transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41); 
-     /* transition: all 0.4s cubic-bezier(1,.11,.06,1.33); 贝塞尔曲线 */
-     /* transition: all 6s cubic-bezier(.08,1.86,.5,-1.07); 贝塞尔曲线 */
- }
- .inner{
-     width: 50px;
-     height: 50px;
-     border-radius: 50%;
-     background-color: rgb(0,160,220);
-     transition: all 0.4s linear;
-}
+
 </style>

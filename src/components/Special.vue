@@ -10,7 +10,7 @@
                 <div class="shopList">
                     <div class="itemTop">
                     <div class="item" v-for="(item,index) in img" :key="index">
-                        <div class="imgBox" @click="goAppDetail">
+                        <div class="imgBox">
                             <img class="shopImg" v-lazy="item"  alt="">
                             <!-- 抢光了 -->
                             <div class="endBox" v-show="index % 2 == 0">
@@ -18,9 +18,9 @@
                             <span style="font-size:10px">SOLD OUT</span>
                             </div>
                         </div>
-                        <div class="shopName" @click="goAppDetail">水山 SB45 破碎锤修理包 下部油封</div>
+                        <div class="shopName">水山 SB45 破碎锤修理包 下部油封</div>
                         <div class="price">
-                            <div @click="goAppDetail">
+                            <div>
                                 <span>￥250</span>
                                 
                             </div>
@@ -44,7 +44,7 @@
                             <div class="shopTitle" @click="goAppDetail">卡特CAT 通用 柴油滤芯 364-52</div>
                             <div class="fireHot" @click="goAppDetail">火爆推荐</div>
                             <div class="price">
-                                <div @click="goAppDetail">
+                                <div>
                                     <span> <span style="font-size:12px">￥</span> 250</span>
                                     <span style="font-size:12px;color:#999;text-decoration: line-through;" >￥200</span>
                                 </div>
@@ -254,6 +254,8 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    padding-right: 2px;
   }
   .cart {
     width: 22px;
