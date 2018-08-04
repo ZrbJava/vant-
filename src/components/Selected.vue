@@ -184,11 +184,16 @@ export default {
         }
       }, 500);
     },
-    test1(){
-        window.zhangwoAndroid.JumpShopDetail();
-    }
   },
-  created() {}
+  created() {
+    alert(111);
+    let UserInfo = window.zhangwoAndroid.getUserInfo();
+    let token_id = JSON.parse(UserInfo)[0];
+    let dev_token = JSON.parse(UserInfo)[1];
+    if( token_id== "" && dev_token == "" ){
+        window.zhangwoAndroid.JumpToLogin();
+    }
+  }
 };
 </script>
 
