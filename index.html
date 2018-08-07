@@ -49,34 +49,33 @@
     // 基本配置
     var config = {
         /*scheme:必须*/
-        scheme_IOS: 'WebCallApp://',
+        scheme_IOS: 'WebCallApp://goodsDetails?id=xxxxx',
         scheme_Adr: 'zhangwo.818.sales://article/attr?name=zhangsan&age=26',
         download_url: "http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo",
         timeout: 2000
     };
 
-    function openclient() {
-        var startTime = +Date.now();
-        console.log(startTime);
-        var ifr = document.createElement('iframe');
-        ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
-        ifr.style.display = 'none';
-        document.body.appendChild(ifr);
-        // if (ua.indexOf('os')) {
-        //     window.location.href = config.scheme_IOS;
-        //     alert("ios");
-        // }
-        var t = setTimeout(function() {
-            var endTime = +Date.now();
+    // function openclient() {
+    //     var startTime = +Date.now();
+    //     console.log(startTime);
+    //     var ifr = document.createElement('iframe');
+    //     ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
+    //     ifr.style.display = 'none';
+    //     document.body.appendChild(ifr);
+    //     var t = setTimeout(function() {
+    //         var endTime = +Date.now();
 
-            if (!startTime || endTime - startTime < config.timeout + 100) {
-                window.location = config.download_url;
-            }
-        }, config.timeout);
-        //如果跳转的话则证明有app，则清除定时器。
-        window.onblur = function() {
-            clearTimeout(t);
-        }
-    }
-    openclient();
+    //         if (!startTime || endTime - startTime < config.timeout + 100) {
+    //             window.location = config.download_url;
+    //         }
+    //     }, config.timeout);
+    //     window.onblur = function() {
+    //         clearTimeout(t);
+    //     }
+    // }
+    // openclient();
+    window.location.href = "WebCallApp://action/?param=1";
+
+    // console.log(config.scheme_IOS);
+    // console.log(window.location.href);
 </script>
