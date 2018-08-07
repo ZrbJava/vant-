@@ -131,7 +131,7 @@ export default {
       // console.log();
       window.location.href = "WebCallApp://action/?param=1";
     // window.location = "WebCallApp://action/?param=1"
-    alert("11111");
+    // alert("11111");
     },
     getUserInfo(){
       var UserInfo = window.zhangwoAndroid.getUserInfo();

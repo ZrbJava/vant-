@@ -120,12 +120,12 @@ export default {
     ...mapMutations(["addCart"]),
     shopCart(){
       // alert(this.count)
-      alert("添加购物车前检测是否有token—_id或设备号");
+      // alert("添加购物车前检测是否有token—_id或设备号");
       let UserInfo = window.zhangwoAndroid.getUserInfo();
       let token_id = JSON.parse(UserInfo)[0];
       let dev_token = JSON.parse(UserInfo)[1];
       if(token_id == undefined && dev_token == undefined){
-        alert("tokenId和设备号都木有，跳转登录页面");
+        // alert("tokenId和设备号都木有，跳转登录页面");
           window.zhangwoAndroid.JumpToLogin();//执行跳转到登录界面
       }else{
         this.addCart();
