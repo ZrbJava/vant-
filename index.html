@@ -3,39 +3,80 @@
 
 <head>
     <meta charset="utf-8">
-    <!-- <meta name='apple-itunes-app' content='app-id=1188625501'> -->
-    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
     <title>818促销</title>
     <style>
-
+        #call-app {
+            position: fixed;
+            z-index: 10000000;
+            ;
+        }
     </style>
 </head>
 
 <body>
+    <!-- <a id="call-app" href="javascript:;"> Start or Download </a><br/><br/>
+    <input id="download-app" type="hidden" name="storeurl" value="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo"> -->
     <div id="app"></div>
+
     <!-- built files will be auto injected -->
 </body>
-<!-- https://itunes.apple.com/cn/app/id1075801122 -->
+
 
 </html>
 <script>
-    //创建一个隐藏的iframe
-    alert(1111);
-    var ifr = document.createElement('iframe');
-    ifr.src = 'zhangwo.818.sales://article/attr?name=zhangsan&age=26';
-    ifr.style.display = 'none';
-    document.body.appendChild(ifr);
-    //记录唤醒时间
-    var openTime = +new Date();
-    console.log(openTime);
-    window.setTimeout(function() {
-        alert("超时执行了");
-        document.body.removeChild(ifr);
-        //如果setTimeout 回调超过2500ms，则弹出下载
-        if ((+new Date()) - openTime > 2500) {
-            alert("回调超过2500ms");
-            window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo';
+    // //创建一个隐藏的iframe
+    // // var ifr = document.createElement('iframe');
+    // ifr.src = 'zhangwo.818.sales://article/attr?name=zhangsan&age=26';
+    // // ifr.src = 'http://www.baidu.com';
+    // ifr.style.display = 'none';
+    // document.body.appendChild(ifr);
+    // //记录唤醒时间
+    // var openTime = +new Date();
+    // console.log(openTime);
+    // window.setTimeout(function() {
+    //     // alert("超时执行了");
+    //     document.body.removeChild(ifr);
+    //     //如果setTimeout 回调超过2500ms，则弹出下载
+    //     if ((+new Date()) - openTime > 2500) {
+    //         // alert("回调超过2500ms");
+    //         window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo';
+    //     }
+    // }, 2000)
+    // 方法二
+    var ua = navigator.userAgent.toLowerCase();
+    var t;
+    // 基本配置
+    var config = {
+        /*scheme:必须*/
+        scheme_IOS: 'WebCallApp://',
+        scheme_Adr: 'zhangwo.818.sales://article/attr?name=zhangsan&age=26',
+        download_url: "http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo",
+        timeout: 2000
+    };
+
+    function openclient() {
+        var startTime = +Date.now();
+        console.log(startTime);
+        var ifr = document.createElement('iframe');
+        ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        // if (ua.indexOf('os')) {
+        //     window.location.href = config.scheme_IOS;
+        //     alert("ios");
+        // }
+        var t = setTimeout(function() {
+            var endTime = +Date.now();
+
+            if (!startTime || endTime - startTime < config.timeout + 100) {
+                window.location = config.download_url;
+            }
+        }, config.timeout);
+        //如果跳转的话则证明有app，则清除定时器。
+        window.onblur = function() {
+            clearTimeout(t);
         }
-    }, 2000)
+    }
+    openclient();
 </script>

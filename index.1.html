@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta name='apple-itunes-app' content='app-id=1188625501'> -->
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
+    <title>818促销</title>
+    <style>
+        #call-app {
+            position: fixed;
+            z-index: 10000000;
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <a id="call-app" href="javascript:;"> Start or Download </a><br/><br/>
+    <input id="download-app" type="hidden" name="storeurl" value="http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo">
+    <div id="app"></div>
+    <!-- <iframe src="zhangwo.818.sales://article/attr?name=zhangsan&age=26" frameborder="0"></iframe> -->
+    <!-- <iframe src="http://www.baidu.com" frameborder="0"></iframe> -->
+    <!-- built files will be auto injected -->
+</body>
+<!-- https://itunes.apple.com/cn/app/id1075801122 -->
+
+</html>
+<script>
+    // //创建一个隐藏的iframe
+    // // var ifr = document.createElement('iframe');
+    // ifr.src = 'zhangwo.818.sales://article/attr?name=zhangsan&age=26';
+    // // ifr.src = 'http://www.baidu.com';
+    // ifr.style.display = 'none';
+    // document.body.appendChild(ifr);
+    // //记录唤醒时间
+    // var openTime = +new Date();
+    // console.log(openTime);
+    // window.setTimeout(function() {
+    //     // alert("超时执行了");
+    //     document.body.removeChild(ifr);
+    //     //如果setTimeout 回调超过2500ms，则弹出下载
+    //     if ((+new Date()) - openTime > 2500) {
+    //         // alert("回调超过2500ms");
+    //         window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo';
+    //     }
+    // }, 2000)
+
+    // (function() {
+    //     var ua = navigator.userAgent.toLowerCase();
+    //     var t;
+    //     var config = {
+    //         /*scheme:必须*/
+    //         scheme_IOS: 'schemedemo://',
+    //         scheme_Adr: 'zhangwo.818.sales://article/attr?name=zhangsan&age=26',
+    //         download_url: document.getElementById('download-app').value,
+    //         timeout: 600
+    //     };
+
+    //     function openclient() {
+    //         var startTime = Date.now();
+    //         var ifr = document.createElement('iframe');
+    //         console.log(ifr)
+    //         ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
+    //         ifr.style.display = 'none';
+    //         document.body.appendChild(ifr);
+
+    //         var t = setTimeout(function() {
+    //             var endTime = Date.now();
+
+    //             if (!startTime || endTime - startTime < config.timeout + 200) {
+    //                 window.location = config.download_url;
+    //             } else {
+
+    //             }
+    //         }, config.timeout);
+
+    //         window.onblur = function() {
+    //             alert("onBlur");
+    //             clearTimeout(t);
+    //         }
+    //     }
+    //     window.addEventListener("DOMContentLoaded", function() {
+    //         alert("页面加载完成");
+    //         document.getElementById("call-app").addEventListener('click',
+    //             openclient, false);
+    //     }, false);
+    // })()
+    //
+
+    //第三种测试方法
+    var isAndroid;
+    var isIOS;
+    var id;
+
+    function load() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        var u = navigator.userAgent;
+        isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var micromessenger = ua.match(/MicroMessenger/i);
+        var weixin = micromessenger == 'micromessenger' ? true : false;
+        // 判断是否是微信内置浏览器
+        if (weixin) {
+            var u = navigator.userAgent;
+            isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+            isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            if (isAndroid) {
+                //这个是安卓操作系统
+                document.getElementById("tips_weix").src = "./common/img/tips_weixin_android.png"
+            }
+            if (isIOS) {　　 //这个是ios操作系统
+            }
+            document.getElementById("tipsdiv").style.display = "";
+        }
+        // Safari 浏览器跳转IOS下载页
+        if (/webkit/i.test(ua) && !(/chrome/i.test(ua) && /webkit/i.test(ua) && /mozilla/i.test(ua))) {
+
+            document.getElementById("down").href = "苹果同事提供下载地址";
+        }
+        if (!weixin) {
+            var src = window.location.href;
+            var I = src.substr(src.indexOf("?id=") + 4).length;
+            var T = src.indexOf("?id=");
+            if (0 >= T) return "";
+            if (I == src.length) return -1;
+            id = src.substr(src.indexOf("?id=") + 4);
+            var test = document.getElementById("test");
+            // 		alert("id =  "+id);  
+            // 		test.href = "dfish://zy.app/openfish?roomid="+id;
+            // 		alert("a标签的href ： "+test.href);
+            test.onclick = openApp("要监听的URL scheme协议");
+        }
+
+    }
+
+    //判断手机上是否安装了app，如果安装直接打开，如果没安装，跳转到下载页面
+    function openApp(url) {
+        if (isAndroid) {
+            var timeout, t = 1000,
+                hasApp = true;
+            var openScript = setTimeout(function() {
+                if (!hasApp) {
+                    var durl = "安卓同事提供下载地址";
+                    window.location.href = durl;
+                }
+                document.body.removeChild(ifr);
+            }, 2000)
+
+            var t1 = Date.now();
+            var ifr = document.createElement("iframe");
+            ifr.setAttribute('src', url);
+            ifr.setAttribute('style', 'display:none');
+            document.body.appendChild(ifr);
+            timeout = setTimeout(function() {
+                var t2 = Date.now();
+                if (!t1 || t2 - t1 < t + 100) {
+                    hasApp = false;
+                }
+            }, t);
+        }
+        if (isIOS) {
+            document.getElementById("test").href = url;
+            document.getElementById("test").click();
+        }
+
+    }
+</script>

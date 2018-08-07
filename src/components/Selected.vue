@@ -24,7 +24,9 @@
                           <hr>
                           <h1 @click="getUserInfo">getUserInfo</h1>
                           <hr>
-                          <a href="zhangwo.818.sales://article/attr?name=zhangsan&age=26">启动应用程序</a >
+                          <div style="padding:20px;background:#0094ff;font-size:20px">
+                            <a href="zhangwo.818.sales://article/attr?name=zhangsan&age=26">启动应用程序</a >
+                          </div>
                           <special @addCart="addCart"></special>
                         </div>
                         <div v-show="active == 1">
