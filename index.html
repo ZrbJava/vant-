@@ -8,34 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum=1.0,user-scalable=no">
     <title>818促销</title>
     <style>
-
+        #call-app {
+            position: fixed;
+            z-index: 10000000;
+            ;
+        }
     </style>
 </head>
 
 <body>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
 </body>
-<!-- https://itunes.apple.com/cn/app/id1075801122 -->
+
 
 </html>
 <script>
-    //创建一个隐藏的iframe
-    alert(1111);
-    var ifr = document.createElement('iframe');
-    ifr.src = 'zhangwo.818.sales://article/attr?name=zhangsan&age=26';
-    ifr.style.display = 'none';
-    document.body.appendChild(ifr);
-    //记录唤醒时间
-    var openTime = +new Date();
-    console.log(openTime);
-    window.setTimeout(function() {
-        alert("超时执行了");
-        document.body.removeChild(ifr);
-        //如果setTimeout 回调超过2500ms，则弹出下载
-        if ((+new Date()) - openTime > 2500) {
-            alert("回调超过2500ms");
-            window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo';
-        }
-    }, 2000)
 </script>

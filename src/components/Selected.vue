@@ -23,8 +23,11 @@
                           <h1 @click="toLoginTest">跳转登录</h1>
                           <hr>
                           <h1 @click="getUserInfo">getUserInfo</h1>
+                          <h1 @click="goApp">getUserInfo</h1>
                           <hr>
-                          <a href="zhangwo.818.sales://article/attr?name=zhangsan&age=26">启动应用程序</a >
+                          <div style="padding:20px;background:#0094ff;font-size:20px">
+                            <a href="zhangwo.818.sales://article/attr?name=zhangsan&age=26">启动应用程序</a >
+                          </div>
                           <special @addCart="addCart"></special>
                         </div>
                         <div v-show="active == 1">
@@ -123,6 +126,41 @@ export default {
     };
   },
   methods: {
+    goApp(){
+      // alert(1111);
+      var url_ios = 'WebCallApp://';
+      var url_android = 'zhangwo.818.sales://article/attr?name=zhangsan&age=26';
+      var url_ios_download = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.luojilab.player&ckey=CK1369314671247';
+      var url_android_download = 'http://a.app.qq.com/o/simple.jsp?pkgname=net.seejoys.zhangwo';
+      //通过window.navigator.userAgent来判断当前设备是IOS还是Android。
+      var Navigator = navigator.userAgent;
+      var ifiPad = (Navigator.match(/(iPad).*OS\s([\d_]+)/)) ? true : false;
+      var ifiPhone = (!ifiPad && Navigator.match(/(iPhone\sOS)\s([\d_]+)/)) ? true : false;
+      var ifIos = (ifiPhone || ifiPad);
+        if (ifIos) {
+            var loadTime = new Date();
+            location.href = url_ios;
+            setTimeout(function() {
+                var outTime = new Date()
+                if (outTime - loadTime > 2000) {
+                    location.href = url_ios_download;
+                }
+            }, 2000)
+        } else {
+            var iframe = document.createElement("iframe");
+            iframe.style.cssText = "display:none;width:0px;height:0px;";
+            document.body.appendChild(iframe);
+            iframe.src = url_android;
+            var loadTime = new Date();
+            location.href = url_android;
+            setTimeout(function() {
+                var outTime = new Date()
+                if (outTime - loadTime > 2000) {
+                    location.href = url_android_download;
+                }
+            }, 2000)
+        }
+    },
     // 改变tab时候获取索引
     test(){
       console.log();
