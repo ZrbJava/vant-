@@ -21,6 +21,7 @@
                           <h1 @click="toLoginTest">跳转登录</h1>
                           <h1 @click="toLoginTest">跳转登录</h1>
                           <h1 @click="toLoginTest">跳转登录</h1>
+                          <h1><button @click="test">ios跳转app</button></h1>
                           <hr>
                           <h1 @click="getUserInfo">getUserInfo</h1>
                           <h1 @click="goApp">getUserInfo</h1>
@@ -163,7 +164,10 @@ export default {
     },
     // 改变tab时候获取索引
     test(){
-      console.log();
+      // console.log();
+      window.location.href = "WebCallApp://action/?param=1";
+    // window.location = "WebCallApp://action/?param=1"
+    // alert("11111");
     },
     getUserInfo(){
       var UserInfo = window.zhangwoAndroid.getUserInfo();
