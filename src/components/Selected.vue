@@ -24,7 +24,14 @@
                           <h1><button @click="test">ios跳转app</button></h1>
                           <hr>
                           <h1 @click="getUserInfo">getUserInfo</h1>
-                          <h1 @click="goApp">getUserInfo</h1>
+                          <h1 @click="goApp">goApp兼容测试</h1>
+                          <h1 @click="goApp">goApp兼容测试</h1>
+                          <h1 @click="goApp">goApp兼容测试</h1>
+                          <h1 @click="goApp">goApp兼容测试</h1>
+                          <h1 @click="goApp">goApp兼容测试</h1>
+                          <h1 @click="goApp">goApp兼容测试</h1>
+                          <h1 @click="goApp">goApp兼容测试</h1>
+                          
                           <hr>
                           <div style="padding:20px;background:#0094ff;font-size:20px">
                             <a href="zhangwo.818.sales://article/attr?name=zhangsan&age=26">启动应用程序</a >
